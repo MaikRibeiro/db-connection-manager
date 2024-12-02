@@ -1,5 +1,10 @@
 # DB Connection Manager
 
+## ⚠️ Atenção/Attention
+Nunca faça o upload de arquivos .properties com suas credenciais de banco de dados para o repositório. Eu adicionei apenas para ilustrar.
+Never, ever upload .properties file with your database credentials to repository. I added it just to illustrate.
+
+
 ## English
 
 This is a Maven project designed to manage connections to relational databases. It provides a simple class with two methods: 
