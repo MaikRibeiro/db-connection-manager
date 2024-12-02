@@ -14,10 +14,10 @@ public class DBManagerConnection {
 
 		try {
 
-			input = DBManagerConnection.class.getClassLoader().getResourceAsStream("Your .properties file name");
+			input = DBManagerConnection.class.getClassLoader().getResourceAsStream("application.properties");
 
 			if (input == null) {
-				System.out.println("Error: .properties file not found");
+				System.out.println("Error: application.properties file not found");
 				return null;
 			}
 
@@ -29,7 +29,7 @@ public class DBManagerConnection {
 			String pass = props.getProperty("DB_PASS"); // The key to the database PASS
 
 			if (url == null || user == null || pass == null) {
-				System.out.println("Error: Please, check if the .properties file contains the keys for url, user and pass");
+				System.out.println("Error: Please, check if the application.properties file contains the DB_URL, DB_USER and DB_PASS");
 				return null;
 			}
 
