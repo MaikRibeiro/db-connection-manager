@@ -3,6 +3,8 @@ package dbManager;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Properties;
 
 public class DBManagerConnection {
@@ -48,5 +50,33 @@ public class DBManagerConnection {
 			}
 		}
 		return null;
+	}
+
+	public void close(Object... resources) {
+
+		if (resources == null || resources.length == 0) {
+	        System.out.println("Error: No resources provided to close.");
+	        return;
+	    }
+
+		for (Object resource : resources) {
+			try {
+				if (resource instanceof ResultSet)
+					((ResultSet) resource).close();
+
+				else if (resource instanceof PreparedStatement)
+					((PreparedStatement) resource).close();
+
+				else if (resource instanceof Connection)
+					((Connection) resource).close();
+				
+				else
+					System.out.println("Unknow resource type: " + resource.getClass().getName());
+				
+			} catch (Exception e) {
+				System.out.println("Error closing resource of type " + resource.getClass().getName() + ": " + e.getMessage());
+	            e.printStackTrace();
+			}
+		}
 	}
 }
