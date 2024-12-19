@@ -8,29 +8,29 @@ import java.util.Properties;
 public class UtilDB {
 	public static Connection open() {
 		Properties props = new Properties();
-		
+
 		String url = null;
 		String user = null;
 		String password = null;
-		
+
 		Connection conn = null;
 		InputStream input = null; 
 
 		try {
-			
+
 			input = UtilDB.class.getClassLoader().getResourceAsStream("application.properties");
-			
+
 			if (input == null) {
 				System.err.println("Unable to find application.properties");
 				return null;
 			}
 
 			props.load(input);
-			
+
 			url = props.getProperty("DB.URL");
 			user = props.getProperty("DB.USER");
 			password = props.getProperty("DB.PASSWORD");
-			
+
 			conn = DriverManager.getConnection(url, user, password);
 
 		} catch (Exception e) {
@@ -99,7 +99,7 @@ public class UtilDB {
       }
 		}
 	}
-	
+
 //	public static void main(String[] args) {
 //		
 //		String sql = "select * from tbl_test";
