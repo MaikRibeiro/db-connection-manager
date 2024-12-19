@@ -3,6 +3,8 @@ package com.utilDB;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Properties;
 
 public class UtilDB {
@@ -100,28 +102,30 @@ public class UtilDB {
 		}
 	}
 
-//	public static void main(String[] args) {
-//		
-//		String sql = "select * from tbl_test";
-//		Connection conn = null;
-//		PreparedStatement ps = null;
-//		ResultSet rs = null;
-//		try {
-//			conn = UtilDB.open();
-//			ps = conn.prepareStatement(sql);
-//			System.out.println(ps);
-//			
-//			rs = ps.executeQuery();
-//			while(rs.next()) {
-//				System.out.println(rs.getInt("tbl_test_id"));
-//				System.out.println(rs.getString("tbl_test_name"));
-//			}
-//			
-//		} catch (Exception e) {
-//			System.err.println("Error on select" + e);
-//
-//		} finally {
-//			UtilDB.close(rs, ps, conn);
-//		}
-//	}
+	// USAGE EXAMPLE
+	public static void main(String[] args) {
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			conn = UtilDB.open();
+
+			ps = conn.prepareStatement("select * from tbl_test");
+			System.out.println(ps);
+			
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				System.out.println(rs.getInt("tbl_test_id"));
+				System.out.println(rs.getString("tbl_test_name"));
+			}
+			
+		} catch (Exception e) {
+			System.err.println("Error on select" + e);
+
+		} finally {
+			UtilDB.close(rs, ps, conn);
+		}
+	}
 }
