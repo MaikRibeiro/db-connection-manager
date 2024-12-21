@@ -21,8 +21,6 @@ This project is useful for Java applications that interact with databases, provi
 - JDBC-compatible database (MySQL, PostgreSQL, etc.).
 - `application.properties` configuration file for database credentials.
 
-***
-
 ## Usage
 Establishing connection:
 ```
